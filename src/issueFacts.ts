@@ -1,3 +1,4 @@
+import { AUD_ISSUES } from "./issueAud";
 import { CNY_ISSUES } from "./issueCny";
 import { EUR_ISSUES } from "./issueEur";
 import { INR_ISSUES } from "./issueInr";
@@ -272,6 +273,7 @@ export const ISSUE_FACTS: readonly Issue[] = [
   ...JPY_ISSUES,
   ...EUR_ISSUES,
   ...INR_ISSUES,
+  ...AUD_ISSUES,
   ...CNY_ISSUES,
   ...KRW_ISSUES,
   ...THB_ISSUES,

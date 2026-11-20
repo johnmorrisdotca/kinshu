@@ -121,4 +121,15 @@ describe("issues at a year", () => {
     expect(issuesAt("INR", "2026").some((issue) => issue.name === "500 rupee note, Mahatma Gandhi (New) Series")).toBe(true);
     expect(cashBreakdown(2500, "INR")?.pieces.some((piece) => piece.minor === 200000)).toBe(false);
   });
+
+  it("uses the Reserve Bank of Australia's next-generation issue dates", () => {
+    expect(issuesAt("AUD", "2015").filter((issue) => issue.kind === "note")).toEqual([]);
+    expect(issueStanding(issues("AUD").find((issue) => issue.name === "5 dollar note, next generation")!, "2016")).toBe("issued");
+    expect(issueStanding(issues("AUD").find((issue) => issue.name === "20 dollar note, next generation")!, "2018")).toBe("before");
+    expect(issueStanding(issues("AUD").find((issue) => issue.name === "20 dollar note, next generation")!, "2019")).toBe("issued");
+    expect(issuesAt("AUD", "2026").filter((issue) => issue.kind === "note").map((issue) => issue.minor).sort((a, b) => a - b)).toEqual([
+      500, 1000, 2000, 5000, 10000,
+    ]);
+    expect(cashBreakdown(20, "AUD")).toBeNull();
+  });
 });
