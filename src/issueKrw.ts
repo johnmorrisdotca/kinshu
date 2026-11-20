@@ -1,0 +1,67 @@
+import type { Issue, PieceKind } from "./types";
+
+const checked = "2026-11-20";
+const source = "https://www.bok.or.kr/eng/main/contents.do?menuNo=400179";
+
+const rows: readonly (readonly [PieceKind, number, string, string, string | null])[] = [
+  ["note", 50000, "50,000 won note, first", "2009-06-23", null],
+  ["note", 10000, "10,000 won note, Ba (6th)", "2007-01-22", null],
+  ["note", 10000, "10,000 won note, Ma (5th)", "2000-06-19", "2016-06-01"],
+  ["note", 10000, "10,000 won note, Ra (4th)", "1994-01-20", "2016-06-01"],
+  ["note", 10000, "10,000 won note, Da (3rd)", "1983-10-08", "2016-06-01"],
+  ["note", 10000, "10,000 won note, Na (2nd)", "1979-06-15", "1993-05-12"],
+  ["note", 10000, "10,000 won note, Ga (1st)", "1973-06-12", "1981-11-10"],
+  ["note", 5000, "5,000 won note, Ma (5th)", "2006-01-02", null],
+  ["note", 5000, "5,000 won note, Ra (4th)", "2002-06-12", "2016-06-01"],
+  ["note", 5000, "5,000 won note, Da (3rd)", "1983-06-11", "2016-06-01"],
+  ["note", 5000, "5,000 won note, Na (2nd)", "1977-06-01", "1993-05-12"],
+  ["note", 5000, "5,000 won note, Ga (1st)", "1972-07-01", "1980-12-01"],
+  ["note", 1000, "1,000 won note, Da (3rd)", "2007-01-22", null],
+  ["note", 1000, "1,000 won note, Na (2nd)", "1983-06-11", "2016-06-01"],
+  ["note", 1000, "1,000 won note, Ga (1st)", "1975-08-14", "1993-05-12"],
+  ["note", 500, "500 won note, Da (3rd)", "1973-09-01", "1993-05-12"],
+  ["note", 500, "500 won note, Na (2nd)", "1966-08-16", "1975-05-10"],
+  ["note", 500, "500 won note, Ga (1st)", "1962-06-10", "1967-02-03"],
+  ["note", 100, "100 won note, Da (3rd)", "1965-08-14", "1980-12-01"],
+  ["note", 100, "100 won note, Na (2nd)", "1962-11-01", "1973-10-30"],
+  ["note", 100, "100 won note, Ga (1st)", "1962-06-10", "1969-02-14"],
+  ["note", 50, "50 won note, Na (2nd)", "1969-03-21", "1973-10-30"],
+  ["note", 50, "50 won note, Ga (1st)", "1962-06-10", "1970-05-20"],
+  ["note", 10, "10 won note, Na (2nd)", "1962-09-21", "1973-10-30"],
+  ["note", 10, "10 won note, Ga (1st)", "1962-06-10", "1962-09-01"],
+  ["note", 5, "5 won note, Ga (1st)", "1962-06-10", "1969-05-01"],
+  ["note", 1, "1 won note, Ga (1st)", "1962-06-10", "1970-05-20"],
+  ["coin", 500, "500 won coin, Ga (1st)", "1982-06-12", null],
+  ["coin", 100, "100 won coin, Na (2nd)", "1983-01-15", null],
+  ["coin", 100, "100 won coin, Ga (1st)", "1970-11-30", null],
+  ["coin", 50, "50 won coin, Na (2nd)", "1983-01-15", null],
+  ["coin", 50, "50 won coin, Ga (1st)", "1972-12-01", null],
+  ["coin", 10, "10 won coin, Ra (4th)", "2006-12-18", null],
+  ["coin", 10, "10 won coin, Da (3rd)", "1983-01-15", null],
+  ["coin", 10, "10 won coin, Na (2nd)", "1970-06-16", null],
+  ["coin", 10, "10 won coin, Ga (1st)", "1966-08-16", null],
+  ["coin", 5, "5 won coin, Da (3rd)", "1983-01-15", null],
+  ["coin", 5, "5 won coin, Na (2nd)", "1972-12-01", null],
+  ["coin", 5, "5 won coin, Ga (1st)", "1969-03-21", null],
+  ["coin", 1, "1 won coin, Da (3rd)", "1983-01-15", null],
+  ["coin", 1, "1 won coin, Na (2nd)", "1968-08-26", null],
+  ["coin", 1, "1 won coin, Ga (1st)", "1966-08-16", "1980-12-01"],
+];
+
+export const KRW_ISSUES: Issue[] = rows.map(([kind, minor, name, from, issuedTo]) => ({
+  code: "KRW",
+  kind,
+  minor,
+  from,
+  issuedTo,
+  tenderTo: null,
+  stillTender: true,
+  honoured: false,
+  asOf: null,
+  name,
+  source,
+  checked,
+  note: issuedTo === null
+    ? `Bank of Korea, currency in circulation, read 20 November 2026. First issue ${from}. Issue has not ceased on this table. The page says some pieces are no longer issued but remain legal tender.`
+    : `Bank of Korea, currency in circulation, read 20 November 2026. First issue ${from}. Issue ceased ${issuedTo}. The page says some pieces are no longer issued but remain legal tender.`,
+}));

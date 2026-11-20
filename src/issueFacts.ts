@@ -1,5 +1,9 @@
+import { CNY_ISSUES } from "./issueCny";
+import { EUR_ISSUES } from "./issueEur";
 import { GBP_ISSUES } from "./issueGbp";
 import { JPY_ISSUES } from "./issueJpy";
+import { KRW_ISSUES } from "./issueKrw";
+import { THB_ISSUES } from "./issueThb";
 import type { Issue } from "./types";
 
 const checked = "2026-11-20";
@@ -265,4 +269,8 @@ export const ISSUE_FACTS: readonly Issue[] = [
   }),
   ...GBP_ISSUES,
   ...JPY_ISSUES,
+  ...EUR_ISSUES,
+  ...CNY_ISSUES,
+  ...KRW_ISSUES,
+  ...THB_ISSUES,
 ];

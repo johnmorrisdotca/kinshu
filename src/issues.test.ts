@@ -85,4 +85,28 @@ describe("issues at a year", () => {
     expect(issuesAt("GBP", "1980").some((issue) => issue.name === "20 pound Series D pictorial note")).toBe(true);
     expect(issuesAt("GBP", "1980").some((issue) => issue.name === "5 pound note")).toBe(false);
   });
+
+  it("uses the euro, renminbi, won and baht dates the issuers printed", () => {
+    expect(issuesAt("EUR", "2001").filter((issue) => issue.kind === "note")).toEqual([]);
+    expect(issuesAt("EUR", "2002").some((issue) => issue.name === "5 euro note, first series")).toBe(true);
+    expect(issueStanding(issues("EUR").find((issue) => issue.name === "5 euro note, Europa series")!, "2012")).toBe("before");
+    expect(issueStanding(issues("EUR").find((issue) => issue.name === "5 euro note, Europa series")!, "2013")).toBe("issued");
+    expect(issueStanding(issues("EUR").find((issue) => issue.name === "500 euro note, first series")!, "2026")).toBe("tender");
+    expect(issuesAt("EUR", "2026").some((issue) => issue.name === "100 euro note, Europa series")).toBe(true);
+
+    expect(issuesAt("CNY", "2014").some((issue) => issue.minor === 10000)).toBe(false);
+    expect(issuesAt("CNY", "2016").some((issue) => issue.name === "100 yuan note, 2015 edition")).toBe(true);
+    expect(issuesAt("CNY", "2019").some((issue) => issue.name === "1 yuan note, 2019 edition")).toBe(true);
+    expect(issuesAt("CNY", "2020").some((issue) => issue.name === "5 yuan note, 2020 edition")).toBe(true);
+
+    const tenThousand = issues("KRW").find((issue) => issue.name === "10,000 won note, Ga (1st)");
+    expect(issueStanding(tenThousand!, "1974")).toBe("issued");
+    expect(issueStanding(tenThousand!, "2026")).toBe("tender");
+    expect(issuesAt("KRW", "2008").some((issue) => issue.name === "50,000 won note, first")).toBe(false);
+    expect(issuesAt("KRW", "2009").some((issue) => issue.name === "50,000 won note, first")).toBe(true);
+
+    expect(issuesAt("THB", "2017").some((issue) => issue.name === "20 baht note, series 17 paper")).toBe(false);
+    expect(issuesAt("THB", "2018").some((issue) => issue.name === "1,000 baht note, series 17")).toBe(true);
+    expect(issuesAt("THB", "2026").some((issue) => issue.name === "50 baht note, series 17 polymer")).toBe(true);
+  });
 });
