@@ -56,9 +56,33 @@ describe("issues at a year", () => {
   });
 
   it("does not invent a past year for a currency whose page gives no start", () => {
-    expect(issuesAt("JPY", "1980")).toEqual([]);
-    expect(issuesAt("JPY", "2026").some((issue) => issue.minor === 10000)).toBe(true);
+    expect(issuesAt("JPY", "1980").map((issue) => issue.name)).toEqual([
+      "100 yen coin",
+      "50 yen coin",
+      "10 yen coin",
+      "5 yen coin",
+      "1 yen coin",
+    ]);
+    expect(issuesAt("JPY", "2026").filter((issue) => issue.minor === 10000).map((issue) => issue.name)).toEqual([
+      "10,000 yen note (2024)",
+      "10,000 yen note (2004)",
+    ]);
+    expect(issueStanding(issues("JPY").find((issue) => issue.name === "2,000 yen note")!, "1999")).toBe("before");
     expect(issuesAt("BHD", "2026")).toEqual([]);
     expect(issues("EUR").length).toBeGreaterThan(0);
+  });
+
+  it("uses the Bank of England's own issue and withdrawal dates", () => {
+    const seriesF = issues("GBP").find((issue) => issue.name === "20 pound Series F note");
+    expect(issueStanding(seriesF!, "2010")).toBe("issued");
+    expect(issueStanding(seriesF!, "2026")).toBe("honoured");
+    expect(issuesAt("GBP", "2026").filter((issue) => issue.kind === "note").map((issue) => issue.name)).toEqual([
+      "5 pound note",
+      "10 pound note",
+      "20 pound note",
+      "50 pound note",
+    ]);
+    expect(issuesAt("GBP", "1980").some((issue) => issue.name === "20 pound Series D pictorial note")).toBe(true);
+    expect(issuesAt("GBP", "1980").some((issue) => issue.name === "5 pound note")).toBe(false);
   });
 });

@@ -1,3 +1,5 @@
+import { GBP_ISSUES } from "./issueGbp";
+import { JPY_ISSUES } from "./issueJpy";
 import type { Issue } from "./types";
 
 const checked = "2026-11-20";
@@ -261,4 +263,6 @@ export const ISSUE_FACTS: readonly Issue[] = [
     checked,
     note: "Series 1934. Printed from 18 December 1934 through 9 January 1935 for transfers between Federal Reserve Banks. It was not circulated among the public.",
   }),
+  ...GBP_ISSUES,
+  ...JPY_ISSUES,
 ];

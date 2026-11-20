@@ -77,13 +77,13 @@ export function issueStanding(issue: Issue, on: string): IssueStanding {
   }
   const printStart = issue.from ? startOf(issue.from) : null;
   const printEnd = issue.issuedTo ? endOf(issue.issuedTo) : null;
+  const tenderEnd = issue.tenderTo ? endOf(issue.tenderTo) : null;
   if (printStart && span.end < printStart) return "before";
+  if (tenderEnd && span.start > tenderEnd) return issue.honoured ? "honoured" : "ended";
   const overlapsPrint = printEnd === null ? printStart !== null : span.start <= printEnd;
   if (overlapsPrint && (printStart === null || span.end >= printStart)) return "issued";
-  const tenderEnd = issue.tenderTo ? endOf(issue.tenderTo) : null;
   if (tenderEnd && span.start <= tenderEnd && (printStart === null || span.end >= printStart)) return "tender";
   if (issue.stillTender && (printStart === null || span.end >= printStart)) return "tender";
-  if (tenderEnd && span.start > tenderEnd) return issue.honoured ? "honoured" : "ended";
   if (printEnd && span.start > printEnd) return "unknown";
   return "unknown";
 }
