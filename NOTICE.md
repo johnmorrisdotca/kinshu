@@ -12,7 +12,7 @@ are written for this package and cite the page they were checked against.
 | When a currency was in use in a country | Unicode CLDR 48 `currencyData.json` region list, generated 2026-11-20 | Unicode-3.0, below |
 | Redenominations, withdrawn Mexican cash, and the Bank of Japan's note count | Written for this package from the page named on each row, checked 2026-11-20 | MIT |
 | Notes and coins by year, including Canada's retired bills and US high denominations | Written for this package from the page named on each row, checked 2026-11-20. A currency with no such page keeps only the issuer's current list, and a past year does not assume it. | MIT |
-| Notes, coins and the everyday amount for CAD, USD, JPY, GBP, EUR, THB, KRW and CNY | Written for this package from the central-bank page named on each cash file, checked 2026-11-20 | MIT |
+| Notes, coins and the everyday amount for CAD, USD, JPY, GBP, EUR, THB, KRW, CNY and INR | Written for this package from the central-bank page named on each cash file, checked 2026-11-20 | MIT |
 | El Salvador's bitcoin row | Decreto Legislativo No. 199, 29 January 2025, Diario Oficial 30 January 2025, as published by the Salvadoran courts | A citation. The row is MIT. |
 
 ## Unicode CLDR

@@ -109,4 +109,16 @@ describe("issues at a year", () => {
     expect(issuesAt("THB", "2018").some((issue) => issue.name === "1,000 baht note, series 17")).toBe(true);
     expect(issuesAt("THB", "2026").some((issue) => issue.name === "50 baht note, series 17 polymer")).toBe(true);
   });
+
+  it("uses the Reserve Bank of India's own introduction and withdrawal dates", () => {
+    expect(issueStanding(issues("INR").find((issue) => issue.name === "10,000 rupee note, 1938")!, "1940")).toBe("issued");
+    expect(issueStanding(issues("INR").find((issue) => issue.name === "10,000 rupee note, 1938")!, "1947")).toBe("ended");
+    expect(issueStanding(issues("INR").find((issue) => issue.name === "500 rupee note, Mahatma Gandhi series 1996")!, "2010")).toBe("issued");
+    expect(issueStanding(issues("INR").find((issue) => issue.name === "500 rupee note, Mahatma Gandhi series 1996")!, "2017")).toBe("ended");
+    expect(issueStanding(issues("INR").find((issue) => issue.name === "2,000 rupee note")!, "2018")).toBe("issued");
+    expect(issueStanding(issues("INR").find((issue) => issue.name === "2,000 rupee note")!, "2026")).toBe("tender");
+    expect(issuesAt("INR", "2015").some((issue) => issue.name === "200 rupee note, Mahatma Gandhi (New) Series")).toBe(false);
+    expect(issuesAt("INR", "2026").some((issue) => issue.name === "500 rupee note, Mahatma Gandhi (New) Series")).toBe(true);
+    expect(cashBreakdown(2500, "INR")?.pieces.some((piece) => piece.minor === 200000)).toBe(false);
+  });
 });

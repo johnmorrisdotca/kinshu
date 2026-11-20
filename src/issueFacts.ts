@@ -1,5 +1,6 @@
 import { CNY_ISSUES } from "./issueCny";
 import { EUR_ISSUES } from "./issueEur";
+import { INR_ISSUES } from "./issueInr";
 import { GBP_ISSUES } from "./issueGbp";
 import { JPY_ISSUES } from "./issueJpy";
 import { KRW_ISSUES } from "./issueKrw";
@@ -270,6 +271,7 @@ export const ISSUE_FACTS: readonly Issue[] = [
   ...GBP_ISSUES,
   ...JPY_ISSUES,
   ...EUR_ISSUES,
+  ...INR_ISSUES,
   ...CNY_ISSUES,
   ...KRW_ISSUES,
   ...THB_ISSUES,

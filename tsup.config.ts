@@ -29,6 +29,7 @@ export default defineConfig({
     "cash/thb": "src/cash/thb.ts",
     "cash/krw": "src/cash/krw.ts",
     "cash/cny": "src/cash/cny.ts",
+    "cash/inr": "src/cash/inr.ts",
   },
   esbuildOptions(options) {
     options.charset = "utf8";

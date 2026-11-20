@@ -82,6 +82,10 @@
       "import": { "types": "./dist/cash/cny.d.ts", "default": "./dist/cash/cny.js" },
       "require": { "types": "./dist/cash/cny.d.cts", "default": "./dist/cash/cny.cjs" }
     },
+    "./cash/inr": {
+      "import": { "types": "./dist/cash/inr.d.ts", "default": "./dist/cash/inr.js" },
+      "require": { "types": "./dist/cash/inr.d.cts", "default": "./dist/cash/inr.cjs" }
+    },
     "./package.json": "./package.json"
   },
   "files": ["dist", "README.md", "LICENSE", "NOTICE.md"],

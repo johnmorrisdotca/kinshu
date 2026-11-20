@@ -1,5 +1,6 @@
 import { cad } from "./cad";
 import { cny } from "./cny";
+import { inr } from "./inr";
 import { eur } from "./eur";
 import { gbp } from "./gbp";
 import { jpy } from "./jpy";
@@ -18,4 +19,5 @@ export const CASH: Readonly<Record<string, CashSet>> = {
   THB: thb,
   KRW: krw,
   CNY: cny,
+  INR: inr,
 };
