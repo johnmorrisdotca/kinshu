@@ -93,7 +93,8 @@
     "typecheck": "tsc -p tsconfig.check.json",
     "test": "vitest run",
     "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test",
-    "site": "pnpm build && node scripts/site.mjs"
+    "site": "pnpm build && node scripts/site.mjs",
+    "demo": "python3 -m http.server 8800 --bind 127.0.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

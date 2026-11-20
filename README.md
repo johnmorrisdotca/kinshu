@@ -27,3 +27,6 @@ symbol, exponent and tender places, and `cashBreakdown` returns null until that 
 
 Bitcoin is `kinshu/bitcoin`. A country is listed only when a primary source has been read.
 El Salvador's 2025 decree is the first row. The rest are not guessed.
+
+`pnpm demo` serves this repo on `127.0.0.1:8800` (the page is `/site/`). A test server uses 8801.
+Kinshu's ports are 8800–8824.
