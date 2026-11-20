@@ -1,6 +1,6 @@
 import { TENURE_ROWS } from "./data/tenures.data";
-import { NOTE_CENSUSES, REDENOMINATIONS, WITHDRAWN } from "./historyFacts";
-import type { NoteCensus, Redenomination, Tenure, WithdrawnCash } from "./types";
+import { NOTE_CENSUSES, REDENOMINATIONS, SERIES, WITHDRAWN } from "./historyFacts";
+import type { CashSeries, NoteCensus, Redenomination, Tenure, WithdrawnCash } from "./types";
 
 const BY_COUNTRY = new Map<string, Tenure[]>();
 for (const [country, code, from, to, tender] of TENURE_ROWS) {
@@ -23,6 +23,12 @@ export function former(country: string): readonly Tenure[] {
 export function redenominations(country: string): readonly Redenomination[] {
   const code = country.toUpperCase();
   return REDENOMINATIONS.filter((row) => row.country === code);
+}
+
+/** Note and coin series an issuer's own catalogue names. An empty list means none has been checked. */
+export function series(country: string): readonly CashSeries[] {
+  const code = country.toUpperCase();
+  return SERIES.filter((row) => row.country === code);
 }
 
 /** Notes or coins a central bank says are no longer legal tender. */

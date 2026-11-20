@@ -6,7 +6,7 @@ and the flags with [Hata](https://github.com/johnmorrisdotca/hata). Country name
 [Kuni](https://github.com/johnmorrisdotca/kuni).
 
 ```ts
-import { cashBreakdown, currenciesOf, issuesAt, redenominations, tender, tenures } from "@johnmorrisdotca/kinshu";
+import { cashBreakdown, currenciesOf, issuesAt, redenominations, series, tender, tenures } from "@johnmorrisdotca/kinshu";
 
 cashBreakdown(185.07, "CAD");
 // exact 18507 cents, cash-rounded to 18505, notes 100, 50, 20, 10, 5 and one nickel
@@ -16,6 +16,8 @@ tender("USD"); // the places where the dollar is legal tender, not the whole wor
 currenciesOf("PA"); // ["PAB", "USD"]
 tenures("FR"); // the euro, and the franc until 17 February 2002
 redenominations("RO"); // 10,000 old lei became 1 leu. The leu did not become the euro.
+redenominations("BG"); // 1.95583 leva became 1 euro on 1 January 2026
+series("MX"); // note series AA, A, B, C, D, F and G
 issuesAt("CAD", "1980"); // includes the 1 and 2 dollar notes
 issuesAt("CAD", "2026"); // those notes are no longer legal tender
 ```

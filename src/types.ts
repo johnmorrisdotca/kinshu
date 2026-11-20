@@ -109,6 +109,17 @@ export interface Redenomination {
   note: string;
 }
 
+export interface CashSeries {
+  country: string;
+  currency: string;
+  kind: "note" | "coin";
+  /** The series letter the issuer prints. */
+  name: string;
+  source: string;
+  checked: string;
+  note: string;
+}
+
 export interface WithdrawnCash {
   country: string;
   currency: string;

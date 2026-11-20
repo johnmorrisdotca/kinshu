@@ -9,7 +9,7 @@ export { bitcoinLaw, bitcoinLaws } from "./bitcoin";
 export { breakdown } from "./breakdown";
 export { CASH } from "./cash/registry";
 export { currencies, currency, isCurrencyCode } from "./currency";
-export { former, noteCensus, redenominations, tenures, withdrawn } from "./history";
+export { former, noteCensus, redenominations, series, tenures, withdrawn } from "./history";
 export { issueStanding, issues, issuesAt } from "./issues";
 export { cashRound, fromMinor, toMinor } from "./minor";
 export { parts } from "./parts";
@@ -19,6 +19,7 @@ export type {
   BitcoinLaw,
   BitcoinStatus,
   CashBreakdown,
+  CashSeries,
   CashSet,
   CountedPiece,
   Currency,

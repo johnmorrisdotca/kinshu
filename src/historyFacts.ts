@@ -1,4 +1,4 @@
-import type { NoteCensus, Redenomination, WithdrawnCash } from "./types";
+import type { CashSeries, NoteCensus, Redenomination, WithdrawnCash } from "./types";
 
 const EURO =
   "https://eur-lex.europa.eu/eli/reg/1998/2866/oj/eng";
@@ -18,6 +18,19 @@ function euro(country: string, from: string, ratio: string): Redenomination {
   };
 }
 
+function laterEuro(country: string, from: string, ratio: string, on: string, reg: string): Redenomination {
+  return {
+    country,
+    from,
+    to: "EUR",
+    ratio,
+    on,
+    source: `https://eur-lex.europa.eu/eli/reg/${reg}/oj/eng`,
+    checked: "2026-11-20",
+    note: `The English text of this regulation prints the rate with a comma. It fixes this many units of the old currency as one euro from ${on}. The date cash stopped is the country's CLDR tenure, not this regulation.`,
+  };
+}
+
 export const REDENOMINATIONS: readonly Redenomination[] = [
   euro("AT", "ATS", "13.7603"),
   euro("BE", "BEF", "40.3399"),
@@ -30,6 +43,16 @@ export const REDENOMINATIONS: readonly Redenomination[] = [
   euro("LU", "LUF", "40.3399"),
   euro("NL", "NLG", "2.20371"),
   euro("PT", "PTE", "200.482"),
+  laterEuro("GR", "GRD", "340.750", "2001-01-01", "2000/1478"),
+  laterEuro("SI", "SIT", "239.640", "2007-01-01", "2006/1086"),
+  laterEuro("CY", "CYP", "0.585274", "2008-01-01", "2007/1135"),
+  laterEuro("MT", "MTL", "0.429300", "2008-01-01", "2007/1134"),
+  laterEuro("SK", "SKK", "30.1260", "2009-01-01", "2008/694"),
+  laterEuro("EE", "EEK", "15.6466", "2011-01-01", "2010/671"),
+  laterEuro("LV", "LVL", "0.702804", "2014-01-01", "2013/870"),
+  laterEuro("LT", "LTL", "3.45280", "2015-01-01", "2014/851"),
+  laterEuro("HR", "HRK", "7.53450", "2023-01-01", "2022/1208"),
+  laterEuro("BG", "BGN", "1.95583", "2026-01-01", "2025/1409"),
   {
     country: "MX",
     from: "MXP",
@@ -86,4 +109,94 @@ export const NOTE_CENSUSES: readonly NoteCensus[] = [
     checked: "2026-11-20",
     note: "The Bank of Japan has issued 56 kinds of notes since 1885. 25 are still valid, including notes no longer issued. 31 can no longer be used. A note stops being valid only when the law says so: 1927, 1946, and 1953. The page counts kinds. It does not give a design history of each one.",
   },
+];
+
+const MEXICO_CATALOGUE =
+  "https://www.banxico.org.mx/billetes-y-monedas/d/%7BC721EF4D-E82E-280E-46DE-4F52E9C02DEC%7D.pdf";
+
+function mexicoSeries(kind: "note" | "coin", name: string, currency: string, note: string): CashSeries {
+  return {
+    country: "MX",
+    currency,
+    kind,
+    name,
+    source: MEXICO_CATALOGUE,
+    checked: "2026-11-20",
+    note: `Banco de México, Catálogo de billetes y monedas, 13 May 2026. ${note}`,
+  };
+}
+
+export const SERIES: readonly CashSeries[] = [
+  mexicoSeries(
+    "note",
+    "AA",
+    "MXP",
+    "Type AA notes were being withdrawn in 1992. They are demonetized because they belong to the monetary unit in force until 31 December 1992.",
+  ),
+  mexicoSeries(
+    "note",
+    "A",
+    "MXP",
+    "Type A notes are the denominations put into circulation during 1992. They are demonetized because they belong to the monetary unit in force until 31 December 1992.",
+  ),
+  mexicoSeries(
+    "note",
+    "B",
+    "MXN",
+    "Type B notes are like type A, denominated in nuevos pesos. They are in the process of withdrawal.",
+  ),
+  mexicoSeries(
+    "note",
+    "C",
+    "MXN",
+    "Type C notes differ from type B and are denominated in nuevos pesos. They are in the process of withdrawal.",
+  ),
+  mexicoSeries(
+    "note",
+    "D",
+    "MXN",
+    "Type D notes are like type C, expressed in pesos of the unit now in force. They are in the process of withdrawal.",
+  ),
+  mexicoSeries(
+    "note",
+    "F",
+    "MXN",
+    "Type F notes were issued to replace type D, in pesos of the unit now in force. This type list does not say they are withdrawn.",
+  ),
+  mexicoSeries(
+    "note",
+    "G",
+    "MXN",
+    "Type G notes were issued to replace type F, in pesos of the unit now in force. This type list does not say they are withdrawn.",
+  ),
+  mexicoSeries(
+    "coin",
+    "AA",
+    "MXP",
+    "Type AA coins were being withdrawn in 1992. They are demonetized because they belong to the monetary unit in force until 31 December 1992.",
+  ),
+  mexicoSeries(
+    "coin",
+    "A",
+    "MXP",
+    "Type A coins are the denominations in circulation during 1992. They are demonetized because they belong to the monetary unit in force until 31 December 1992.",
+  ),
+  mexicoSeries(
+    "coin",
+    "B",
+    "MXN",
+    "Type B coins differ from type A and are expressed in nuevos pesos. The ones named in annex 2 are in the process of withdrawal.",
+  ),
+  mexicoSeries(
+    "coin",
+    "C",
+    "MXN",
+    "Type C coins are like type B. The ones named in annex 2 are in the process of withdrawal.",
+  ),
+  mexicoSeries(
+    "coin",
+    "D",
+    "MXN",
+    "Type D coins were issued to replace the type C coins of 10, 20 and 50 centavos.",
+  ),
 ];
