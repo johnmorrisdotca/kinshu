@@ -132,4 +132,26 @@ describe("issues at a year", () => {
     ]);
     expect(cashBreakdown(20, "AUD")).toBeNull();
   });
+
+  it("uses the real, franc and peso dates the issuers printed", () => {
+    expect(issueStanding(issues("BRL").find((issue) => issue.name === "10 real note, first family")!, "1994")).toBe("issued");
+    expect(issueStanding(issues("BRL").find((issue) => issue.name === "10 real note, second family")!, "2011")).toBe("before");
+    expect(issueStanding(issues("BRL").find((issue) => issue.name === "10 real note, second family")!, "2012")).toBe("issued");
+    expect(issuesAt("BRL", "2025").some((issue) => issue.name === "200 real note, second family")).toBe(false);
+    expect(issuesAt("BRL", "2026").some((issue) => issue.name === "200 real note, second family")).toBe(true);
+    expect(issues("BRL").some((issue) => issue.name.includes("Cabral"))).toBe(false);
+
+    expect(issueStanding(issues("CHF").find((issue) => issue.name === "50 franc note, ninth series")!, "2015")).toBe("before");
+    expect(issueStanding(issues("CHF").find((issue) => issue.name === "50 franc note, ninth series")!, "2016")).toBe("issued");
+    expect(issuesAt("CHF", "2026").filter((issue) => issue.kind === "note")).toHaveLength(6);
+    expect(cashBreakdown(50, "CHF")).toBeNull();
+
+    expect(issueStanding(issues("MXN").find((issue) => issue.name === "500 peso note, type G")!, "2017")).toBe("before");
+    expect(issueStanding(issues("MXN").find((issue) => issue.name === "500 peso note, type G")!, "2018")).toBe("issued");
+    expect(issueStanding(issues("MXN").find((issue) => issue.name === "1000 peso note, type F")!, "2010")).toBe("issued");
+    expect(issueStanding(issues("MXN").find((issue) => issue.name === "1000 peso note, type F")!, "2026")).toBe("tender");
+    expect(issueStanding(issues("MXN").find((issue) => issue.name === "50 peso note, type F, polymer")!, "2026")).toBe("tender");
+    expect(issuesAt("MXN", "2024").some((issue) => issue.name === "100 peso note, type G, bank centenary")).toBe(false);
+    expect(issuesAt("MXN", "2025").some((issue) => issue.name === "100 peso note, type G, bank centenary")).toBe(true);
+  });
 });

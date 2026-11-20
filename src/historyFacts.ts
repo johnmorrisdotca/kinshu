@@ -64,6 +64,16 @@ export const REDENOMINATIONS: readonly Redenomination[] = [
     note: "Banco de México says the peso unit in force until 31 December 1992 is worth one thousandth of its face value. Three zeros were removed for the unit that began on 1 January 1993.",
   },
   {
+    country: "BR",
+    from: "BRR",
+    to: "BRL",
+    ratio: "2750",
+    on: "1994-07-01",
+    source: "https://www.bcb.gov.br/cedulasemoedas/cedulasemitidas",
+    checked: "2026-11-20",
+    note: "Banco Central do Brasil, cédulas produzidas, read 20 November 2026. On 1 July 1994 one URV became one real. The page states 1 URV = 2.750 cruzeiros reais = 1 real. The dot is the thousands separator.",
+  },
+  {
     country: "RO",
     from: "ROL",
     to: "RON",

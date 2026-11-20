@@ -22,6 +22,7 @@ export default defineConfig({
     bitcoin: "src/bitcoin.ts",
     history: "src/history.ts",
     "cash/cad": "src/cash/cad.ts",
+    "cash/brl": "src/cash/brl.ts",
     "cash/usd": "src/cash/usd.ts",
     "cash/jpy": "src/cash/jpy.ts",
     "cash/gbp": "src/cash/gbp.ts",

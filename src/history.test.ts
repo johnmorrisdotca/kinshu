@@ -35,6 +35,7 @@ describe("tenures", () => {
 
   it("records the peso cut and the notes and coins that lost tender", () => {
     expect(redenominations("MX")).toMatchObject([{ from: "MXP", to: "MXN", ratio: "1000", on: "1993-01-01" }]);
+    expect(redenominations("BR")).toMatchObject([{ from: "BRR", to: "BRL", ratio: "2750", on: "1994-07-01" }]);
     expect(former("MX").map((row) => row.code)).toEqual(["MXP"]);
     expect(tenures("MX").some((row) => row.code === "MXV" && !row.tender)).toBe(true);
     expect(series("MX").filter((row) => row.kind === "note").map((row) => row.name)).toEqual([

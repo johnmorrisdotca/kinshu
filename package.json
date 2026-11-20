@@ -54,6 +54,10 @@
       "import": { "types": "./dist/cash/cad.d.ts", "default": "./dist/cash/cad.js" },
       "require": { "types": "./dist/cash/cad.d.cts", "default": "./dist/cash/cad.cjs" }
     },
+    "./cash/brl": {
+      "import": { "types": "./dist/cash/brl.d.ts", "default": "./dist/cash/brl.js" },
+      "require": { "types": "./dist/cash/brl.d.cts", "default": "./dist/cash/brl.cjs" }
+    },
     "./cash/usd": {
       "import": { "types": "./dist/cash/usd.d.ts", "default": "./dist/cash/usd.js" },
       "require": { "types": "./dist/cash/usd.d.cts", "default": "./dist/cash/usd.cjs" }

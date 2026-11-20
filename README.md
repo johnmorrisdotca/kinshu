@@ -24,7 +24,7 @@ issuesAt("CAD", "2026"); // those notes are no longer legal tender
 
 `kinshu/minor`, `kinshu/parts` and `kinshu/breakdown` carry no dataset.
 `kinshu/cash/cad` is one currency's notes and coins.
-Nine currencies have checked cash files. Every other current tender currency has its name,
+Ten currencies have checked cash files. Every other current tender currency has its name,
 symbol, exponent and tender places, and `cashBreakdown` returns null until that cash file is checked.
 
 Bitcoin is `kinshu/bitcoin`. A country is listed only when a primary source has been read.

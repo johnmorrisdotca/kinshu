@@ -1,10 +1,13 @@
 import { AUD_ISSUES } from "./issueAud";
+import { BRL_ISSUES } from "./issueBrl";
+import { CHF_ISSUES } from "./issueChf";
 import { CNY_ISSUES } from "./issueCny";
 import { EUR_ISSUES } from "./issueEur";
 import { INR_ISSUES } from "./issueInr";
 import { GBP_ISSUES } from "./issueGbp";
 import { JPY_ISSUES } from "./issueJpy";
 import { KRW_ISSUES } from "./issueKrw";
+import { MXN_ISSUES } from "./issueMxn";
 import { THB_ISSUES } from "./issueThb";
 import type { Issue } from "./types";
 
@@ -274,6 +277,9 @@ export const ISSUE_FACTS: readonly Issue[] = [
   ...EUR_ISSUES,
   ...INR_ISSUES,
   ...AUD_ISSUES,
+  ...BRL_ISSUES,
+  ...CHF_ISSUES,
+  ...MXN_ISSUES,
   ...CNY_ISSUES,
   ...KRW_ISSUES,
   ...THB_ISSUES,

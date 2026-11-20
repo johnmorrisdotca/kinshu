@@ -1,3 +1,4 @@
+import { brl } from "./brl";
 import { cad } from "./cad";
 import { cny } from "./cny";
 import { inr } from "./inr";
@@ -12,6 +13,7 @@ import type { CashSet } from "../types";
 /** The cash files checked by hand. Every other currency has identity and tender places, and no pieces yet. */
 export const CASH: Readonly<Record<string, CashSet>> = {
   CAD: cad,
+  BRL: brl,
   USD: usd,
   JPY: jpy,
   GBP: gbp,
